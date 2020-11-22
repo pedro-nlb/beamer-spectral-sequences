@@ -1,0 +1,1 @@
+beamer  document named sseq
