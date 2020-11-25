@@ -121,20 +121,22 @@
 % MATH OPERATORS
 %
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
 
 %
 % OTHER COMMANDS
 %
 \newcommand{\ot}{\otimes}
 \newcommand{\op}{\oplus}
+\newcommand{\filt}{F^{\bullet}}
 
 %
 % TITLE PAGE INFORMATION
 %
-\title[Title]{Title}
+\title[Basic Notions --- Spectral Sequences]{Basic Notions --- Spectral Sequences}
 \author{Pedro Núñez}
 \institute{University of Freiburg}
-\date{\today}
+\date{10th December 2020}
  
 %
 % LINKS AND PDF OPTIONS
@@ -159,14 +161,42 @@
 \begin{document}
  
 \frame{\titlepage}
- 
-\begin{frame}
-\frametitle{Sample frame title}
-This is a text in the first frame. This is a text in the first frame. This is a text in the first frame.
-Here is a formula:
-\[ \chi(\F)=\sum_{i=0}^{\dim{X}}(-1)^{i}h^{i}(X,\F). \]
 
-    References included by default in the .bib file are \cite{har77} and \cite{stacks}.
+\begin{frame}
+    \frametitle{``You could have invented spectral sequences''}
+    \begin{itemize}
+	\item This is the title of the expository article \cite{cho06}.
+	    \pause
+	\item The author tries to convince the reader that they could have come up with the definition of \textit{spectral sequence} themselves.
+	    \pause
+	\item Our modester goal will be to go through an easy example in detail and hopefully convince ourselves by the end of the talk that the definition of a spectral sequence makes sense.
+	    \pause
+	\item \textbf{Example:} let $k$ be a field and consider a cochain complex $C^{\bullet}$ of finite dimensional $k$-vector spaces
+	    \[ \cdots \to 0\to C^{0}\xrightarrow{d^{0}} C^{1}\xrightarrow{d^{1}} C^{2}\to 0 \to \cdots \]
+	    \pause
+	    \vspace{-5mm}
+	\item \textbf{Goal:} compute the cohomology $H^{\bullet}$ of the complex $C^{\bullet}$
+	    \[ H^{\bullet}:=H^{0}(C^{\bullet})\op H^{1}(C^{\bullet})\op H^{2}(C^{\bullet}). \]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Starting point}
+    \begin{itemize}
+	\item If we do not have any extra information about $C^{\bullet}$, there is not much more we can do besides applying the definition
+	    \[ H^{\bullet}=\ker(d^{0})\op\frac{\ker(d^{1})}{\im(d^{0})}\op \frac{C^{2}}{\im(d^{1})}. \]
+	    \pause
+	    \vspace{-5mm}
+	\item Luckily, $C^{\bullet}$ has often a natural filtration, for example
+	    \begin{center}
+		\begin{tikzcd}[ampersand replacement=\&]
+		    C^{\bullet}=F^{0}C^{\bullet} \& C^{0}\arrow{r}{d^{0}} \&[-10pt] C^{1}\arrow{r}{d^{1}} \&[-10pt] C^{2} \\[-10pt]
+		    F^{1}C^{\bullet}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& F^{1}C^{0}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{1}C^{1}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{1}C^{2}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \\[-10pt]
+		    F^{2}C^{\bullet}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& F^{2}C^{0}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{2}C^{1}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{2}C^{2}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \\[-10pt]
+		    0=F^{3}C^{\bullet}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}
+		\end{tikzcd}
+	    \end{center}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}

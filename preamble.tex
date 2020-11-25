@@ -22,13 +22,13 @@
 \usepackage{mathrsfs}
 % Font package (only supports upper case letters).
 
-\usepackage{enumitem}
-% To control the layout of enumerate, itemize and description. It supersedes the enumerate package.
-
 \usepackage{tikz-cd}
 % To draw commutative diagrams.
 \usetikzlibrary{decorations.markings}
 % For open and closed immersions.
+\usetikzlibrary{arrows,arrows.meta}
+% To change the style of the arrows.
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
 
 \usepackage{graphicx}
 % An extension of the graphics package, with optional arguments for the \includegraphics command.
