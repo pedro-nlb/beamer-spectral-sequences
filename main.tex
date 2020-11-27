@@ -121,6 +121,7 @@
 % MATH OPERATORS
 %
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Gr}{Gr}
 \DeclareMathOperator{\im}{im}
 
 %
@@ -181,22 +182,89 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Starting point}
+    \frametitle{Starting point: a filtration on our complex}
     \begin{itemize}
+	    \vspace{-5mm}
 	\item If we do not have any extra information about $C^{\bullet}$, there is not much more we can do besides applying the definition
 	    \[ H^{\bullet}=\ker(d^{0})\op\frac{\ker(d^{1})}{\im(d^{0})}\op \frac{C^{2}}{\im(d^{1})}. \]
 	    \pause
 	    \vspace{-5mm}
-	\item Luckily, $C^{\bullet}$ has often a natural filtration, for example
+	\item But $C^{\bullet}$ has often some \underline{useful} filtration $F^{\bullet}C^{\bullet}$, say
+	    \vspace{3mm}
 	    \begin{center}
+		\hspace{-5mm}
 		\begin{tikzcd}[ampersand replacement=\&]
-		    C^{\bullet}=F^{0}C^{\bullet} \& C^{0}\arrow{r}{d^{0}} \&[-10pt] C^{1}\arrow{r}{d^{1}} \&[-10pt] C^{2} \\[-10pt]
-		    F^{1}C^{\bullet}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& F^{1}C^{0}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{1}C^{1}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{1}C^{2}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \\[-10pt]
-		    F^{2}C^{\bullet}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& F^{2}C^{0}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{2}C^{1}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{2}C^{2}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \\[-10pt]
-		    0=F^{3}C^{\bullet}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}
+		    C^{\bullet}=F^{0}C^{\bullet} \&[-20pt] \cdots 0\arrow{r} \&[-15pt] C^{0}\arrow{r}{d^{0}} \arrow{r} \&[-10pt] C^{1}\arrow{r}{d^{1}} \&[-10pt] C^{2} \arrow{r} \&[-15pt] 0\cdots \\
+		    F^{1}C^{\bullet}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& \cdots 0\arrow{r} \& F^{1}C^{0}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{1}C^{1}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{1}C^{2}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0 \cdots \\
+		    0=F^{2}C^{\bullet}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& \cdots 0 \arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0 \cdots
 		\end{tikzcd}
 	    \end{center}
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{How could a filtration on $C^{\bullet}$ \underline{potentially} help?}
+    \pause
+    \begin{enumerate}
+	\item $0\subseteq F^{1}C^{\bullet}\subseteq C^{\bullet}$ induces a filtration $0\subseteq F^{1}H^{\bullet}\subseteq H^{\bullet}$ given by
+	    \[ F^{1}H^{i}:=\im\left(H^{i}(F^{1}C^{\bullet})\to H^{i}(C^{\bullet})\right) \text{ for all }i\in \{0,1,2\}. \]
+	    \vspace{-5mm}
+	    \pause
+	\item We can then recover $H^{i}$ as the associated graded vector space
+	    \[ \Gr(F^{\bullet}H^{i})=F^{1}H^{i}\op \left(H^{i}/F^{1}H^{i}\right)\cong H^{i} \text{ for all }i\in \{0,1,2\}. \]
+	    \vspace{-5mm}
+	    \pause
+	\item $F^{\bullet}C^{\bullet}$ being a filtered complex means that $F^{1}C^{\bullet}\subseteq C^{\bullet}$ is a subcomplex, so that $F^{1}C^{\bullet}$ and $C^{\bullet}/F^{1}C^{\bullet}$ are complexes as well.
+    \end{enumerate}
+    \pause
+    \vspace{5mm}
+    \begin{itemize}
+	\item \textbf{Q1:} Can we compute the cohomologies of $F^{1}C^{\bullet}$ and $C^{\bullet}/F^{1}C^{\bullet}$?
+	    \vspace{2mm}
+	    \pause
+	\item \textbf{Q2:} Are these cohomologies related to $F^{1}H^{\bullet}$ and $H^{\bullet}/F^{1}H^{\bullet}$?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Possible scenario I: the good}
+    \begin{itemize}
+	\item Suppose $C^{\bullet}=C_{1}^{\bullet}\op C_{2}^{\bullet}$ with $H^{\bullet}(C_{1}^{\bullet})$ and $H^{\bullet}(C_{2}^{\bullet})$ computable.
+	    \pause
+	\item Then we are done, because $H^{\bullet}(C^{\bullet})=H^{\bullet}(C_{1}^{\bullet})\op H^{\bullet}(C_{2}^{\bullet})$.
+	    \pause
+	\item To rephrase this with filtrations we take
+	    \vspace{-3mm}
+	    \[ F^{1}C^{\bullet}:=C_{1}^{\bullet} \quad \left(\quad \Rightarrow \quad C^{\bullet}/F^{1}C^{\bullet}=C_{2}^{\bullet}. \quad \right) \]
+	    \vspace{-8mm}
+	    \pause
+	\item Then we have
+	    \[ F^{1}H^{\bullet}:=\im(H^{\bullet}(F^{1}C^{\bullet})\to H^{\bullet}(C^{\bullet}))=H^{\bullet}(C_{1}^{\bullet})=H^{\bullet}(F^{1}C^{\bullet}) \]
+	    and similarly $H^{\bullet}/F^{1}H^{\bullet}=H^{\bullet}(C_{2}^{\bullet})=H^{\bullet}(C^{\bullet}/F^{1}C^{\bullet})$.
+	    \pause
+    \end{itemize}
+    \vspace{2mm}
+    So in this case we can carry out our naive strategy of computing each graded piece of the induced filtration in cohomology separately:
+    \hspace{-10mm}
+    \[ \boxed{\underset{\text{on complex}}{\text{filtration}}}\rightsquigarrow \boxed{\underset{\text{associated to filtration}}{\text{graded pieces}}} \rightsquigarrow \boxed{\underset{\text{cohomologies}}{\text{compute}}} \rightsquigarrow \boxed{\underset{{\text{graded pieces}}}{\text{put together}}} \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{Possible scenario II: the bad}
+    \begin{itemize}
+	\item Suppose we know nothing about $C^{\bullet}$.
+	    The \textit{stupid filtration} yields
+	    \[
+	    \begin{cases}
+		F^{1}C^{\bullet}:= & \cdots \to 0\to 0 \to C^{1}\xrightarrow{d^{1}} C^{2} \to 0 \to \cdots \\
+		C^{\bullet}/F^{1}C^{\bullet}:= & \cdots \to 0 \to C^{0}\to 0 \to 0 \to 0 \to \cdots
+	    \end{cases}
+	    \]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Possible scenario III: the ugly}
 \end{frame}
 
 \begin{frame}
