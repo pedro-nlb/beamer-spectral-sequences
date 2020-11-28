@@ -121,7 +121,7 @@
 % MATH OPERATORS
 %
 \DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\gr}{gr}
 \DeclareMathOperator{\im}{im}
 
 %
@@ -177,7 +177,7 @@
 	    \pause
 	    \vspace{-5mm}
 	\item \textbf{Goal:} compute the cohomology $H^{\bullet}$ of the complex $C^{\bullet}$
-	    \[ H^{\bullet}:=H^{0}(C^{\bullet})\op H^{1}(C^{\bullet})\op H^{2}(C^{\bullet}). \]
+	    \[ H^{\bullet}:=H^{0}(C^{\bullet})[0]\op H^{1}(C^{\bullet})[-1]\op H^{2}(C^{\bullet})[-2]. \]
     \end{itemize}
 \end{frame}
 
@@ -186,7 +186,7 @@
     \begin{itemize}
 	    \vspace{-5mm}
 	\item If we do not have any extra information about $C^{\bullet}$, there is not much more we can do besides applying the definition
-	    \[ H^{\bullet}=\ker(d^{0})\op\frac{\ker(d^{1})}{\im(d^{0})}\op \frac{C^{2}}{\im(d^{1})}. \]
+	    \[ H^{\bullet}=\ker(d^{0})[0]\op\frac{\ker(d^{1})}{\im(d^{0})}[-1]\op \frac{C^{2}}{\im(d^{1})}[-2]. \]
 	    \pause
 	    \vspace{-5mm}
 	\item But $C^{\bullet}$ has often some \underline{useful} filtration $F^{\bullet}C^{\bullet}$, say
@@ -211,7 +211,7 @@
 	    \vspace{-5mm}
 	    \pause
 	\item We can then recover $H^{i}$ as the associated graded vector space
-	    \[ \Gr(F^{\bullet}H^{i})=F^{1}H^{i}\op \left(H^{i}/F^{1}H^{i}\right)\cong H^{i} \text{ for all }i\in \{0,1,2\}. \]
+	    \[ \gr(F^{\bullet}H^{i})=F^{1}H^{i}\op \left(H^{i}/F^{1}H^{i}\right)\cong H^{i} \text{ for all }i\in \{0,1,2\}. \]
 	    \vspace{-5mm}
 	    \pause
 	\item $F^{\bullet}C^{\bullet}$ being a filtered complex means that $F^{1}C^{\bullet}\subseteq C^{\bullet}$ is a subcomplex, so that $F^{1}C^{\bullet}$ and $C^{\bullet}/F^{1}C^{\bullet}$ are complexes as well.
@@ -251,20 +251,30 @@
 
 \begin{frame}
     \frametitle{Possible scenario II: the bad}
-    \begin{itemize}
-	\item Suppose we know nothing about $C^{\bullet}$.
-	    The \textit{stupid filtration} yields
-	    \[
-	    \begin{cases}
-		F^{1}C^{\bullet}:= & \cdots \to 0\to 0 \to C^{1}\xrightarrow{d^{1}} C^{2} \to 0 \to \cdots \\
-		C^{\bullet}/F^{1}C^{\bullet}:= & \cdots \to 0 \to C^{0}\to 0 \to 0 \to 0 \to \cdots
-	    \end{cases}
-	    \]
-    \end{itemize}
+    Suppose we know nothing about $C^{\bullet}$.
+	The \textit{stupid filtration}
+	\[
+	\begin{cases}
+	    F^{1}C^{\bullet}:= & \cdots \to 0\to 0 \to C^{1}\xrightarrow{d^{1}} C^{2} \to 0 \to \cdots \\
+	    F^{2}C^{\bullet}:= & \cdots \to 0 \to 0 \to 0 \to C^{2}\to 0 \to \cdots 
+	\end{cases}
+	\]
+	induces the cohomology filtration
+	\[
+	\begin{cases}
+	    F^{1}H^{\bullet}:=\im(H^{\bullet}(F^{1}C^{\bullet})\to H^{\bullet}(C^{\bullet}))=H^{1}(C^{\bullet})[-1]\op H^{2}(C^{\bullet})[-2] \\
+	    F^{2}H^{\bullet}:=\im(H^{\bullet}(F^{2}C^{\bullet})\to H^{\bullet}(C^{\bullet}))=H^{2}(C^{\bullet})[-2]
+	\end{cases}
+	\]
+	whose graded pieces are $H^{0}(C^{\bullet})[0]$, $H^{1}(C^{\bullet})[-1]$ and $H^{2}(C^{\bullet})[-2]$.
+
+	So in this case computing $\gr^{i}H^{\bullet}(C^{\bullet})$ is as hard as computing $H^{i}(C^{\bullet})$ and we just wasted our time with this detour.
 \end{frame}
 
 \begin{frame}
     \frametitle{Possible scenario III: the ugly}
+    Suppose now that we are somewhere in between the good and the bad scenarios.
+    Namely, assume that we have some filtration $0\subsetneq F^{1}C^{\bullet} \subsetneq C^{\bullet}$ which does not correspond to a direct sum decomposition but such that we can compute the graded pieces $\gr^{i}(H^{\bullet}(C^{\bullet}))$ of the filtration induced in cohomology.
 \end{frame}
 
 \begin{frame}
