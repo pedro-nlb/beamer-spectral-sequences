@@ -9,6 +9,7 @@
 \usepackage{libertine}
 \usepackage[libertine]{newtxmath}
 \usefonttheme[onlymath]{serif}
+\usepackage{animate}
 
 %
 % STANDARD PREAMBLE
@@ -164,13 +165,27 @@
 \frame{\titlepage}
 
 \begin{frame}
+    \frametitle{\centerline{Idea is easy to motivate}}
+    \begin{figure}
+	\centering
+	\includegraphics[scale=.6]{pictures/good}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\centerline{Notation gets ugly real quick}}
+    \begin{figure}
+	\centering
+	\includegraphics[scale=.307]{pictures/bad}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
     \frametitle{``You could have invented spectral sequences''}
     \begin{itemize}
 	\item This is the title of the expository article \cite{cho06}.
 	    \pause
-	\item The author tries to convince the reader that they could have come up with the definition of \textit{spectral sequence} themselves.
-	    \pause
-	\item Our modester goal will be to go through an easy example in detail and hopefully convince ourselves by the end of the talk that the definition of a spectral sequence makes sense.
+	\item In the spirit of \cite{cho06}, we will go through an easy example in detail and hopefully convince ourselves by the end of the talk that the definition of a spectral sequence makes sense.
 	    \pause
 	\item \textbf{Example:} let $k$ be a field and consider a cochain complex $C^{\bullet}$ of finite dimensional $k$-vector spaces
 	    \[ \cdots \to 0\to C^{0}\xrightarrow{d^{0}} C^{1}\xrightarrow{d^{1}} C^{2}\to 0 \to \cdots \]
