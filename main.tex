@@ -165,7 +165,7 @@
 \frame{\titlepage}
 
 \begin{frame}
-    \frametitle{\centerline{Idea is easy to motivate}}
+    \frametitle{\centerline{``You could have invented spectral sequences''\footnote{Title of the expository article \cite{cho06}}}}
     \begin{figure}
 	\centering
 	\includegraphics[scale=.6]{pictures/good}
@@ -181,19 +181,54 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{``You could have invented spectral sequences''}
-    \begin{itemize}
-	\item This is the title of the expository article \cite{cho06}.
-	    \pause
-	\item In the spirit of \cite{cho06}, we will go through an easy example in detail and hopefully convince ourselves by the end of the talk that the definition of a spectral sequence makes sense.
-	    \pause
-	\item \textbf{Example:} let $k$ be a field and consider a cochain complex $C^{\bullet}$ of finite dimensional $k$-vector spaces
-	    \[ \cdots \to 0\to C^{0}\xrightarrow{d^{0}} C^{1}\xrightarrow{d^{1}} C^{2}\to 0 \to \cdots \]
-	    \pause
-	    \vspace{-5mm}
-	\item \textbf{Goal:} compute the cohomology $H^{\bullet}$ of the complex $C^{\bullet}$
-	    \[ H^{\bullet}:=H^{0}(C^{\bullet})[0]\op H^{1}(C^{\bullet})[-1]\op H^{2}(C^{\bullet})[-2]. \]
-    \end{itemize}
+    \frametitle{Notation usually following the Stacks project \cite{stacks}}
+	\begin{itemize}
+	    \item Only finite dimensional vector spaces over $\Q$ for simplicity.
+		\pause
+	    \item (Cochain) complexes denoted with capital letters $C$ and not $C^{\bullet}$.
+		\pause
+	    \item Cohomology again denoted just $H(C)$ and not $H^{\bullet}(C)$.
+		\pause
+	    \item Cohomology is regarded as a copmlex with $0$ differentials
+		\[ H(C)=\bigoplus_{i\in \Z}H^{i}(C)[-i]:=\left(\cdots H^{-1}(C)\xrightarrow{0} H^{0}(C)\xrightarrow{0}H^{1}(C) \cdots \right). \]
+		\pause
+	    \item If it is clear to which $C$ we refer, denote $H(C)$ simply by $H$.
+		\pause
+	    \item (Decreasing) filtrations are always finite for simplicity:
+		\[ F^{\bullet}A \colon \quad 0=F^{n}A\subseteq \ldots \subseteq F^{0}A=A. \]
+		\pause
+	    \item The graded object associated to a filtration $F^{\bullet}A$ is denoted
+		\[ \gr{A}=\bigoplus_{p\in \N} \gr^{p}A:=\bigoplus_{p\in \N}\left( F^{p}A/F^{p+1}A \right). \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Goal: compute cohomology with the help of a filtration}
+    % Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=red!20, 
+    text width=2.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{start} = [draw, rectangle, fill=blue!20, 
+    text width=3em, text centered, rounded corners=3mm, minimum height=2em]
+\tikzstyle{block} = [rectangle, draw, fill=yellow!20, 
+    text width=4em, text centered, minimum height=2em]
+\tikzstyle{result} = [draw, rectangle, fill=green!20, 
+    text width=11em, text centered, rounded corners=3mm, minimum height=3em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, trapezium, trapezium left angle=75, trapezium right angle=105, fill=red!20, node distance=3cm,
+    minimum height=2em]
+\begin{center}
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [start] (complex) {$C$};
+    \node [cloud, below of=complex, node distance=20mm] (filtration) {$F^{\bullet}C$};
+    \node [block, left of=filtration, node distance=3cm] (gradedC) {$\gr^{p}C$};
+    \node [block, right of=filtration, node distance=3cm] (induced) {$F^{\bullet}H$};
+    \node [block, below of=gradedC, node distance=23mm] (cohomGradedC) {$H(\gr^{p}C)$};
+    \node [block, below of=induced, node distance=23mm] (gradedH) {$\gr^{p}H$};
+    \node [decision, below of=filtration, node distance=23mm] (compare) {$\cong $?};
+    \node [result, below of=compare, node distance=20mm] {$H\cong \gr H \cong \bigoplus H(\gr^{p}C)$};
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}
