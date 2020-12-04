@@ -10,6 +10,7 @@
 \usepackage[libertine]{newtxmath}
 \usefonttheme[onlymath]{serif}
 \usepackage{animate}
+\usepackage{adjustbox}
 
 %
 % STANDARD PREAMBLE
@@ -209,6 +210,8 @@
     text width=2.5em, text badly centered, node distance=3cm, inner sep=0pt]
 \tikzstyle{start} = [draw, rectangle, fill=blue!20, 
     text width=3em, text centered, rounded corners=3mm, minimum height=2em]
+\tikzstyle{tbc} = [draw, ellipse, fill=blue!20, 
+    text width=3em, text centered, minimum height=2em]
 \tikzstyle{block} = [rectangle, draw, fill=yellow!20, 
     text width=4em, text centered, minimum height=2em]
 \tikzstyle{result} = [draw, rectangle, fill=green!20, 
@@ -220,111 +223,57 @@
 \begin{tikzpicture}[node distance = 2cm, auto]
     % Place nodes
     \node [start] (complex) {$C$};
-    \node [cloud, below of=complex, node distance=20mm] (filtration) {$F^{\bullet}C$};
+    \node [cloud, below of=complex, node distance=15mm] (filtration) {$F^{\bullet}C$};
     \node [block, left of=filtration, node distance=3cm] (gradedC) {$\gr^{p}C$};
     \node [block, right of=filtration, node distance=3cm] (induced) {$F^{\bullet}H$};
-    \node [block, below of=gradedC, node distance=23mm] (cohomGradedC) {$H(\gr^{p}C)$};
-    \node [block, below of=induced, node distance=23mm] (gradedH) {$\gr^{p}H$};
-    \node [decision, below of=filtration, node distance=23mm] (compare) {$\cong $?};
-    \node [result, below of=compare, node distance=20mm] {$H\cong \gr H \cong \bigoplus H(\gr^{p}C)$};
+    \node [block, below of=gradedC, node distance=20mm] (cohomGradedC) {$H(\gr^{p}C)$};
+    \node [block, below of=induced, node distance=20mm] (gradedH) {$\gr^{p}H$};
+    \node [decision, below of=filtration, node distance=30mm] (compare) {$\cong $?};
+    \node [start, below of=cohomGradedC, node distance=18mm] (whatNow) {TBC};
+    \node [result, below of=compare, node distance=20mm] (cohom) {$H\cong \gr H \cong \bigoplus H(\gr^{p}C)$};
+    % Draw edges
+    \path [line] (complex) -- (filtration);
+    \path [line] (filtration) -- (gradedC);
+    \path [line] (filtration) -- (induced);
+    \path [line] (gradedC) -- (cohomGradedC);
+    \path [line] (induced) -- (gradedH);
+    \path [line] (cohomGradedC) -| (compare);
+    \path [line] (gradedH) |- (compare);
+    \path [line] (compare) -- node {yes}(cohom);
+    \path [line, dashed] (compare) -| node [near start] {no}(whatNow);
 \end{tikzpicture}
 \end{center}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Starting point: a filtration on our complex}
-    \begin{itemize}
-	    \vspace{-5mm}
-	\item If we do not have any extra information about $C^{\bullet}$, there is not much more we can do besides applying the definition
-	    \[ H^{\bullet}=\ker(d^{0})[0]\op\frac{\ker(d^{1})}{\im(d^{0})}[-1]\op \frac{C^{2}}{\im(d^{1})}[-2]. \]
-	    \pause
-	    \vspace{-5mm}
-	\item But $C^{\bullet}$ has often some \underline{useful} filtration $F^{\bullet}C^{\bullet}$, say
-	    \vspace{3mm}
-	    \begin{center}
-		\hspace{-5mm}
-		\begin{tikzcd}[ampersand replacement=\&]
-		    C^{\bullet}=F^{0}C^{\bullet} \&[-20pt] \cdots 0\arrow{r} \&[-15pt] C^{0}\arrow{r}{d^{0}} \arrow{r} \&[-10pt] C^{1}\arrow{r}{d^{1}} \&[-10pt] C^{2} \arrow{r} \&[-15pt] 0\cdots \\
-		    F^{1}C^{\bullet}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& \cdots 0\arrow{r} \& F^{1}C^{0}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{1}C^{1}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& F^{1}C^{2}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0 \cdots \\
-		    0=F^{2}C^{\bullet}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& \cdots 0 \arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0 \cdots
-		\end{tikzcd}
-	    \end{center}
-    \end{itemize}
+    \frametitle{Filtration induced in cohomology}
+    A filtration on the complx $F^{\bullet}C$ induces a filtration in cohomology
+    \[ F^{p}H:=\im(H(F^{p}C)\to H(C))\subseteq H(C)=H, \]
+    where $H(F^{p}C)\to H(C)$ is induced by the inclusion map $F^{p}C\hookrightarrow C$.
 \end{frame}
 
 \begin{frame}
-    \frametitle{How could a filtration on $C^{\bullet}$ \underline{potentially} help?}
+    \frametitle{Baby example: 2 step filtration on a length 1 complex}
+    \adjustbox{scale=1.2,center}{%
+	\begin{tikzcd}[ampersand replacement=\&]
+	    C=F^{0}C \&[-20pt] \cdots\arrow{r} \&[-15pt] 0\arrow{r} \&[-15pt] C^{0}\arrow{r}{d^{0}} \arrow{r} \&[10pt] C^{1}\arrow{r} \&[-15pt] 0\arrow{r} \&[-15pt] \cdots \\
+	    F^{1}C\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& \cdots\arrow{r} \& 0\arrow{r} \& F^{1}C^{0}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r}{d^{0}|_{F^{1}C^{0}}} \& F^{1}C^{1}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0 \arrow{r} \&[-15pt]\cdots \\
+	    0=F^{2}C\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& \cdots\arrow{r} \& 0 \arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r}\& 0 \arrow{r} \&[-15pt]\cdots
+	\end{tikzcd}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Baby example: filtration induced in cohomology}
+    \adjustbox{scale=1.2,center}{%
+	\begin{tikzcd}[ampersand replacement=\&]
+	    \hspace{5mm}H(F^{1}C)\mbox{ }\mbox{ }\mbox{ }=\arrow{d} \&[-20pt] \hspace{2mm}\ker\left(d^{0}|_{F^{1}C}\right)[0]\op \left(\frac{F^{1}C^{1}}{\im\left(d^{0}|_{F^{1}C}\right)}\right)[-1]\arrow{d} \\
+	    \hspace{7mm}H(C)\quad = \& \hspace{3.5mm}\ker(d^{0})[0]\op \left(\frac{C^{1}}{\im(d^{0})}\right)[-1]
+	\end{tikzcd}
+    }
     \pause
-    \begin{enumerate}
-	\item $0\subseteq F^{1}C^{\bullet}\subseteq C^{\bullet}$ induces a filtration $0\subseteq F^{1}H^{\bullet}\subseteq H^{\bullet}$ given by
-	    \[ F^{1}H^{i}:=\im\left(H^{i}(F^{1}C^{\bullet})\to H^{i}(C^{\bullet})\right) \text{ for all }i\in \{0,1,2\}. \]
-	    \vspace{-5mm}
-	    \pause
-	\item We can then recover $H^{i}$ as the associated graded vector space
-	    \[ \gr(F^{\bullet}H^{i})=F^{1}H^{i}\op \left(H^{i}/F^{1}H^{i}\right)\cong H^{i} \text{ for all }i\in \{0,1,2\}. \]
-	    \vspace{-5mm}
-	    \pause
-	\item $F^{\bullet}C^{\bullet}$ being a filtered complex means that $F^{1}C^{\bullet}\subseteq C^{\bullet}$ is a subcomplex, so that $F^{1}C^{\bullet}$ and $C^{\bullet}/F^{1}C^{\bullet}$ are complexes as well.
-    \end{enumerate}
-    \pause
-    \vspace{5mm}
-    \begin{itemize}
-	\item \textbf{Q1:} Can we compute the cohomologies of $F^{1}C^{\bullet}$ and $C^{\bullet}/F^{1}C^{\bullet}$?
-	    \vspace{2mm}
-	    \pause
-	\item \textbf{Q2:} Are these cohomologies related to $F^{1}H^{\bullet}$ and $H^{\bullet}/F^{1}H^{\bullet}$?
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Possible scenario I: the good}
-    \begin{itemize}
-	\item Suppose $C^{\bullet}=C_{1}^{\bullet}\op C_{2}^{\bullet}$ with $H^{\bullet}(C_{1}^{\bullet})$ and $H^{\bullet}(C_{2}^{\bullet})$ computable.
-	    \pause
-	\item Then we are done, because $H^{\bullet}(C^{\bullet})=H^{\bullet}(C_{1}^{\bullet})\op H^{\bullet}(C_{2}^{\bullet})$.
-	    \pause
-	\item To rephrase this with filtrations we take
-	    \vspace{-3mm}
-	    \[ F^{1}C^{\bullet}:=C_{1}^{\bullet} \quad \left(\quad \Rightarrow \quad C^{\bullet}/F^{1}C^{\bullet}=C_{2}^{\bullet}. \quad \right) \]
-	    \vspace{-8mm}
-	    \pause
-	\item Then we have
-	    \[ F^{1}H^{\bullet}:=\im(H^{\bullet}(F^{1}C^{\bullet})\to H^{\bullet}(C^{\bullet}))=H^{\bullet}(C_{1}^{\bullet})=H^{\bullet}(F^{1}C^{\bullet}) \]
-	    and similarly $H^{\bullet}/F^{1}H^{\bullet}=H^{\bullet}(C_{2}^{\bullet})=H^{\bullet}(C^{\bullet}/F^{1}C^{\bullet})$.
-	    \pause
-    \end{itemize}
-    \vspace{2mm}
-    So in this case we can carry out our naive strategy of computing each graded piece of the induced filtration in cohomology separately:
-    \hspace{-10mm}
-    \[ \boxed{\underset{\text{on complex}}{\text{filtration}}}\rightsquigarrow \boxed{\underset{\text{associated to filtration}}{\text{graded pieces}}} \rightsquigarrow \boxed{\underset{\text{cohomologies}}{\text{compute}}} \rightsquigarrow \boxed{\underset{{\text{graded pieces}}}{\text{put together}}} \]
-\end{frame}
-
-\begin{frame}
-    \frametitle{Possible scenario II: the bad}
-    Suppose we know nothing about $C^{\bullet}$.
-	The \textit{stupid filtration}
-	\[
-	\begin{cases}
-	    F^{1}C^{\bullet}:= & \cdots \to 0\to 0 \to C^{1}\xrightarrow{d^{1}} C^{2} \to 0 \to \cdots \\
-	    F^{2}C^{\bullet}:= & \cdots \to 0 \to 0 \to 0 \to C^{2}\to 0 \to \cdots 
-	\end{cases}
-	\]
-	induces the cohomology filtration
-	\[
-	\begin{cases}
-	    F^{1}H^{\bullet}:=\im(H^{\bullet}(F^{1}C^{\bullet})\to H^{\bullet}(C^{\bullet}))=H^{1}(C^{\bullet})[-1]\op H^{2}(C^{\bullet})[-2] \\
-	    F^{2}H^{\bullet}:=\im(H^{\bullet}(F^{2}C^{\bullet})\to H^{\bullet}(C^{\bullet}))=H^{2}(C^{\bullet})[-2]
-	\end{cases}
-	\]
-	whose graded pieces are $H^{0}(C^{\bullet})[0]$, $H^{1}(C^{\bullet})[-1]$ and $H^{2}(C^{\bullet})[-2]$.
-
-	So in this case computing $\gr^{i}H^{\bullet}(C^{\bullet})$ is as hard as computing $H^{i}(C^{\bullet})$ and we just wasted our time with this detour.
-\end{frame}
-
-\begin{frame}
-    \frametitle{Possible scenario III: the ugly}
-    Suppose now that we are somewhere in between the good and the bad scenarios.
-    Namely, assume that we have some filtration $0\subsetneq F^{1}C^{\bullet} \subsetneq C^{\bullet}$ which does not correspond to a direct sum decomposition but such that we can compute the graded pieces $\gr^{i}(H^{\bullet}(C^{\bullet}))$ of the filtration induced in cohomology.
+    \vspace{3em}
+    \[ \Rightarrow F^{1}H=\ker\left(d^{0}|_{F^{1}C}\right)[0]\op \left(\frac{F^{1}C^{1}+\im(d^{0})}{\im(d^{0})}\right)[-1] \]
 \end{frame}
 
 \begin{frame}
