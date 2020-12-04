@@ -315,30 +315,54 @@
 \begin{frame}
     \frametitle{\textsc{Baby Example}: define $E_{0}^{p,q}:=(\gr^{p}C)^{p+q}$ and visualize in $\Z^{2}$}
     \begin{columns}
+    \hspace{-5mm}
     \begin{column}{0.5\textwidth}
     \begin{tikzpicture}[ampersand replacement=\&]
 	\matrix (m) [matrix of math nodes,
 	nodes in empty cells, nodes={minimum width=5ex,
 	minimum height=5ex, outer sep=-5pt},
-	column sep=1ex, row sep=1ex]{
+	column sep=2ex, row sep=1ex]{
 	      \&   \&   \&  \&   \& \\
-	    2 \& 0 \& 0 \& 0 \& 0 \& \\
-	    1 \& 0 \& C^{1}/F^{1}C^{1} \& 0 \& 0 \& \\
-	    0 \& 0 \& C^{0}/F^{1}C^{0} \& F^{1}C^{1} \& 0 \& \\
-	    -1\hspace{2mm} \& 0 \& 0 \& F^{1}C^{0} \& 0 \& \\
-	    -2\hspace{2mm} \& 0 \& 0 \& 0 \& 0 \& \\
+	    2 \& \color{gray!50}0 \& \color{gray!50}0 \& \color{gray!50}0 \& \color{gray!50}0 \& \\
+	    1 \& \color{gray!50}0 \& C^{1}/F^{1}C^{1} \& \color{gray!50}0 \& \color{gray!50}0 \& \\
+	    0 \& \color{gray!50}0 \& C^{0}/F^{1}C^{0} \& F^{1}C^{1} \& \color{gray!50}0 \& \\
+	    -1\hspace{2mm} \& \color{gray!50}0 \& \color{gray!50}0 \& F^{1}C^{0} \& \color{gray!50}0 \& \\
+	    -2\hspace{2mm} \& \color{gray!50}0 \& \color{gray!50}0 \& \color{gray!50}0 \& \color{gray!50}0 \& \\
 	    \quad\strut \& -1 \& 0 \& 1 \& 2 \& \strut \\};
 	\draw[-stealth] (m-4-3.north) -- node [left] {$d^{0,0}_{0}$}(m-3-3.south);
 	\draw[-stealth] (m-5-4.north) -- node [right] {$d^{1,-1}_{0}$}(m-4-4.south);
 	\draw[-stealth, ultra thick] (m-7-1.east) -- (m-1-1.east) node[above]{$q$};
 	\draw[-stealth, ultra thick] (m-7-1.north) -- (m-7-6.north) node[right]{$p$};
+	\draw[gray!50, -stealth] (m-3-2.north) -- (m-2-2.south);
+	\draw[gray!50, -stealth] (m-4-2.north) -- (m-3-2.south);
+	\draw[gray!50, -stealth] (m-5-2.north) -- (m-4-2.south);
+	\draw[gray!50, -stealth] (m-6-2.north) -- (m-5-2.south);
+	\draw[gray!50, -stealth] (m-3-3.north) -- (m-2-3.south);
+	\draw[gray!50, -stealth] (m-5-3.north) -- (m-4-3.south);
+	\draw[gray!50, -stealth] (m-6-3.north) -- (m-5-3.south);
+	\draw[gray!50, -stealth] (m-3-4.north) -- (m-2-4.south);
+	\draw[gray!50, -stealth] (m-4-4.north) -- (m-3-4.south);
+	\draw[gray!50, -stealth] (m-6-4.north) -- (m-5-4.south);
+	\draw[gray!50, -stealth] (m-3-5.north) -- (m-2-5.south);
+	\draw[gray!50, -stealth] (m-4-5.north) -- (m-3-5.south);
+	\draw[gray!50, -stealth] (m-5-5.north) -- (m-4-5.south);
+	\draw[gray!50, -stealth] (m-6-5.north) -- (m-5-5.south);
     \end{tikzpicture}
+    \pause
     \end{column}
-    \begin{column}{0.5\textwidth}
+	\hspace{5mm}
+    \begin{column}{0.52\textwidth}
 	\begin{itemize}
-	    \item Since $F^{1}C\subseteq C$ is a subcomplex, $d^{0}\colon C^{0}\to C^{1}$ induces a morphism $d^{0,0}_{0}\colon C^{0}/F^{1}C^{0}\to C^{1}/F^{1}C^{1}$.
-	    \item For the same reason, $d^{0}|_{F^{1}C}$ has image in $F^{1}C^{1}$, so we may see it as a morphism
-		\[ d_{0}^{1,-1}\colon F^{1}C^{0}\to F^{1}C^{1}. \]
+		\vspace{-20mm}
+	    \item Since $F^{1}C\subseteq C$ is a subcomplex, $d^{0}\colon C^{0}\to C^{1}$ induces the differential $d^{0,0}_{0}$.
+		\vspace{2mm}
+		\pause
+
+	    \item For the same reason, $d^{0}|_{F^{1}C}$ has image in $F^{1}C^{1}$, so it induces the differential $d_{0}^{1,-1}$.
+		\vspace{2mm}
+		\pause
+
+	    \item In general, since $F^{p+1}C\subseteq F^{p}C$ is a subcomplex, the original differentials induce all vertical differentials.
 	\end{itemize}
     \end{column}
     \end{columns}
