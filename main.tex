@@ -9,7 +9,6 @@
 \usepackage{libertine}
 \usepackage[libertine]{newtxmath}
 \usefonttheme[onlymath]{serif}
-\usepackage{animate}
 \usepackage{adjustbox}
 
 %
@@ -174,7 +173,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{\centerline{Notation gets ugly real quick}}
+    \frametitle{\centerline{Notation gets ugly very soon}}
     \begin{figure}
 	\centering
 	\includegraphics[scale=.307]{pictures/bad}
@@ -182,7 +181,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Notation usually following the Stacks project \cite{stacks}}
+    \frametitle{Notation and conventions \cite{stacks}}
 	\begin{itemize}
 	    \item Only finite dimensional vector spaces over $\Q$ for simplicity.
 		\pause
@@ -204,7 +203,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Goal: compute cohomology with the help of a filtration}
+    \frametitle{\textsc{Goal}: compute cohomology with the help of a filtration}
     % Define block styles
 \tikzstyle{decision} = [diamond, draw, fill=red!20, 
     text width=2.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -253,27 +252,85 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Baby example: 2 step filtration on a length 1 complex}
+    \frametitle{\textsc{Baby Example}: 2 step filtration on a length 1 complex}
     \adjustbox{scale=1.2,center}{%
 	\begin{tikzcd}[ampersand replacement=\&]
-	    C=F^{0}C \&[-20pt] \cdots\arrow{r} \&[-15pt] 0\arrow{r} \&[-15pt] C^{0}\arrow{r}{d^{0}} \arrow{r} \&[10pt] C^{1}\arrow{r} \&[-15pt] 0\arrow{r} \&[-15pt] \cdots \\
+	    C \&[-20pt] \&[-15pt] \&[-15pt] \&[10pt] \&[-15pt] \&[-15pt] \\[-15pt]
+	    F^{0}C\arrow[draw=none]{u}[sloped,auto=false]{=} \& \cdots\arrow{r} \& 0\arrow{r} \& C^{0}\arrow{r}{d^{0}} \arrow{r} \& C^{1}\arrow{r} \& 0\arrow{r} \& \cdots \\
 	    F^{1}C\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& \cdots\arrow{r} \& 0\arrow{r} \& F^{1}C^{0}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r}{d^{0}|_{F^{1}C^{0}}} \& F^{1}C^{1}\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0 \arrow{r} \&[-15pt]\cdots \\
-	    0=F^{2}C\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& \cdots\arrow{r} \& 0 \arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r}\& 0 \arrow{r} \&[-15pt]\cdots
+	    F^{2}C\arrow[draw=none]{u}[sloped,auto=false]{\subseteq} \& \cdots\arrow{r} \& 0 \arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r} \& 0\arrow[draw=none]{u}[sloped,auto=false]{\subseteq}\arrow{r}\& 0 \arrow{r} \&[-15pt]\cdots \\[-15pt]
+	    0\arrow[draw=none]{u}[sloped,auto=false]{=} \& \& \& \& \& \&
 	\end{tikzcd}
     }
 \end{frame}
 
 \begin{frame}
-    \frametitle{Baby example: filtration induced in cohomology}
-    \adjustbox{scale=1.2,center}{%
+    \frametitle{\textsc{Baby Example}: filtration induced in cohomology}
+    \vspace{-3mm}
+    We first look at the map induced by $F^{1}C\hookrightarrow C$ in cohomology:
+
+    \vspace{2mm}
+    \adjustbox{scale=1.1,center}{%
 	\begin{tikzcd}[ampersand replacement=\&]
 	    \hspace{5mm}H(F^{1}C)\mbox{ }\mbox{ }\mbox{ }=\arrow{d} \&[-20pt] \hspace{2mm}\ker\left(d^{0}|_{F^{1}C}\right)[0]\op \left(\frac{F^{1}C^{1}}{\im\left(d^{0}|_{F^{1}C}\right)}\right)[-1]\arrow{d} \\
 	    \hspace{7mm}H(C)\quad = \& \hspace{3.5mm}\ker(d^{0})[0]\op \left(\frac{C^{1}}{\im(d^{0})}\right)[-1]
 	\end{tikzcd}
     }
     \pause
-    \vspace{3em}
-    \[ \Rightarrow F^{1}H=\ker\left(d^{0}|_{F^{1}C}\right)[0]\op \left(\frac{F^{1}C^{1}+\im(d^{0})}{\im(d^{0})}\right)[-1] \]
+    
+    \vspace{1cm}
+    The filtration on cohomology was given by its image, hence
+    \vspace{3mm}
+
+    \adjustbox{scale=1.2,center}{%
+    \begin{tcolorbox}[colback=yellow!25!white,colframe=orange!5!white,text width=8cm]
+    \vspace{-3mm}
+    \[ F^{1}H=\ker\left(d^{0}|_{F^{1}C}\right)[0]\op \left(\frac{F^{1}C^{1}+\im(d^{0})}{\im(d^{0})}\right)[-1] \]
+    \end{tcolorbox}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Baby Example}: graded cohomology pieces}
+    Recall that $\gr^{0}H:=F^{0}H/F^{1}H=H/F^{1}H$, hence (after $\cong$-theorem)
+    \vspace{3mm}
+
+    \adjustbox{scale=1.2,center}{%
+    \begin{tcolorbox}[colback=yellow!25!white,colframe=orange!5!white,text width=8cm]
+    \vspace{-3mm}
+	\[ \gr^{0}H=\left(\frac{\ker(d^{0})}{\ker\left(d^{0}|_{F^{1}C}\right)}\right)[0]\op \left(\frac{C^{1}}{F^{1}C^{1}+\im(d^{0})}\right)[-1] \]
+    \end{tcolorbox}}
+    \pause
+
+    \vspace{6mm}
+    Similarly, $\gr^{1}H=F^{1}H/0=F^{1}H$, thus 
+    \vspace{3mm}
+
+    \adjustbox{scale=1.2,center}{%
+    \begin{tcolorbox}[colback=yellow!25!white,colframe=orange!5!white,text width=8cm]
+    \vspace{-3mm}
+    \[ \gr^{1}H=\ker\left(d^{0}|_{F^{1}C}\right)[0]\op \left(\frac{F^{1}C^{1}+\im(d^{0})}{\im(d^{0})}\right)[-1] \]
+    \end{tcolorbox}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Baby Example}: define $E_{0}^{p,q}:=(\gr^{p}C)^{p+q}$ and visualize in $\Z^{2}$}
+    \begin{tikzpicture}[ampersand replacement=\&]
+	\matrix (m) [matrix of math nodes,
+	nodes in empty cells, nodes={minimum width=5ex,
+	minimum height=5ex, outer sep=-5pt},
+	column sep=1ex, row sep=1ex]{
+	      \&   \&   \&  \&   \& \\
+	    2 \& 0 \& 0 \& 0 \& 0 \& \\
+	    1 \& 0 \& C^{1}/F^{1}C^{1} \& 0 \& 0 \& \\
+	    0 \& 0 \& C^{0}/F^{1}C^{0} \& F^{1}C^{1} \& 0 \& \\
+	    -1\hspace{2mm} \& 0 \& 0 \& F^{1}C^{0} \& 0 \& \\
+	    -2\hspace{2mm} \& 0 \& 0 \& 0 \& 0 \& \\
+	    \quad\strut \& -1 \& 0 \& 1 \& 2 \& \strut \\};
+	\draw[-stealth] (m-4-3.north) -- node [left] {$d^{0,0}_{0}$}(m-3-3.south);
+	\draw[-stealth] (m-5-4.north) -- node [right] {$d^{1,-1}_{0}$}(m-4-4.south);
+	\draw[-stealth, ultra thick] (m-7-1.east) -- (m-1-1.east) node[above]{$q$};
+	\draw[-stealth, ultra thick] (m-7-1.north) -- (m-7-6.north) node[right]{$p$};
+    \end{tikzpicture}
 \end{frame}
 
 \begin{frame}
