@@ -314,6 +314,8 @@
 
 \begin{frame}
     \frametitle{\textsc{Baby Example}: define $E_{0}^{p,q}:=(\gr^{p}C)^{p+q}$ and visualize in $\Z^{2}$}
+    \begin{columns}
+    \begin{column}{0.5\textwidth}
     \begin{tikzpicture}[ampersand replacement=\&]
 	\matrix (m) [matrix of math nodes,
 	nodes in empty cells, nodes={minimum width=5ex,
@@ -331,6 +333,15 @@
 	\draw[-stealth, ultra thick] (m-7-1.east) -- (m-1-1.east) node[above]{$q$};
 	\draw[-stealth, ultra thick] (m-7-1.north) -- (m-7-6.north) node[right]{$p$};
     \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+	\begin{itemize}
+	    \item Since $F^{1}C\subseteq C$ is a subcomplex, $d^{0}\colon C^{0}\to C^{1}$ induces a morphism $d^{0,0}_{0}\colon C^{0}/F^{1}C^{0}\to C^{1}/F^{1}C^{1}$.
+	    \item For the same reason, $d^{0}|_{F^{1}C}$ has image in $F^{1}C^{1}$, so we may see it as a morphism
+		\[ d_{0}^{1,-1}\colon F^{1}C^{0}\to F^{1}C^{1}. \]
+	\end{itemize}
+    \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
