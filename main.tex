@@ -376,7 +376,7 @@
     \adjustbox{scale=1.1,center}{%
     \begin{tcolorbox}[colback=yellow!25!white,colframe=orange!5!white,text width=10cm]
     \vspace{-3mm}
-	\[ H(\gr^{0}C)=\left(\frac{\ker(d^{0})+(d^{0})^{-1}(F^{1}C)}{F^{1}C^{0}}\right)[0]\op \left(\frac{C^{1}}{F^{1}C^{1}+\im(d^{0})}\right)[-1] \]
+	\[ H(\gr^{0}C)=\left(\frac{\ker(d^{0})+(d^{0})^{-1}(F^{1}C^{1})}{F^{1}C^{0}}\right)[0]\op \left(\frac{C^{1}}{F^{1}C^{1}+\im(d^{0})}\right)[-1] \]
     \end{tcolorbox}}
     \pause
 
@@ -388,6 +388,109 @@
     \begin{tcolorbox}[colback=yellow!25!white,colframe=orange!5!white,text width=10cm]
 	\[ H(\gr^{1}C)=\ker\left(d^{0}|_{F^{1}C}\right)[0]\op \left(\frac{F^{1}C^{1}}{\im(d^{0}|_{F^{1}C})}\right)[-1] \]
     \end{tcolorbox}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Baby Example}: $1^{\mathrm{st}}$ approximation to the $\gr^{0}H$ part}
+    We compare $\gr^{0}H$ (left column) to $H(\gr^{0}C)$ (right column):
+    \vspace{3mm}
+
+    \adjustbox{scale=1.3,center}{%
+    \begin{tcolorbox}[colback=red!15!white,colframe=orange!5!white,text width=8cm]
+	\begin{tikzcd}[ampersand replacement=\&]
+	    \left(\frac{\ker(d^{0})}{\ker(d^{0}|_{F^{1}C})}\right)[0] \&[-15pt] \&[-15pt] \left(\frac{\ker(d^{0})+(d^{0})^{-1}(F^{1}C^{1})}{F^{1}C^{0}}\right)[0] \\[-20pt]
+	    \op \& \& \op \\[-20pt]
+	    \left(\frac{C^{1}}{F^{1}C^{1}+\im(d^{0})}\right)[-1] \& \& \left(\frac{C^{1}}{F^{1}C^{1}+\im(d^{0})}\right)[-1] 
+	\end{tikzcd}
+    \end{tcolorbox}}
+    \pause
+
+    \vspace{5mm}
+    \begin{itemize}
+	\item $H^{1}(\gr^{0}C)$ does compute $\gr^{0}H^{1}$ (bottom row),
+	    \pause
+	
+	    \vspace{3mm}
+	\item but $H^{0}(\gr^{0}C)$ is not isomorphic to $\gr^{0}H^{0}$ (top row).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Baby Example}: $1^{\mathrm{st}}$ approximation to the $\gr^{1}H$ part}
+    We compare now $\gr^{1}H$ (left column) to $H(\gr^{1}C)$ (right column):
+    \vspace{3mm}
+
+    \adjustbox{scale=1.3,center}{%
+    \begin{tcolorbox}[colback=red!15!white,colframe=orange!5!white,text width=8cm]
+	\begin{tikzcd}[ampersand replacement=\&]
+	    \ker\left(d^{0}|_{F^{1}C}\right)[0] \&[-15pt] \&[-15pt] \ker\left(d^{0}|_{F^{1}C}\right)[0] \\[-20pt]
+	    \op \& \& \op \\[-20pt]
+	    \left(\frac{F^{1}C^{1}+\im(d^{0})}{\im(d^{0})}\right)[-1] \& \& \left(\frac{F^{1}C^{1}}{\im\left(d^{0}|_{F^{1}C}\right)}\right)[-1] 
+	\end{tikzcd}
+    \end{tcolorbox}}
+    \pause
+
+    \vspace{5mm}
+    \begin{itemize}
+	\item In this case $H^{0}(\gr^{0}C)$ does compute $\gr^{0}H^{0}$ (top row),
+	    \pause
+	
+	    \vspace{3mm}
+	\item but $H^{1}(\gr^{0}C)$ is not isomorphic to $\gr^{0}H^{1}$ (bottom row).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Baby Example}: define $E_{1}^{p,q}:=H^{p+q}(\gr^{p}C)$ and plot in $\Z^{2}$}
+    \begin{tikzpicture}[ampersand replacement=\&]
+	\matrix (m) [matrix of math nodes,
+	nodes in empty cells, nodes={minimum width=5ex,
+	minimum height=4ex, outer sep=-5pt},
+	column sep=8ex, row sep=1ex]{
+	    \&  \&  \& \\
+	    1 \& \frac{C^{1}}{F^{1}C^{1}+\im(d^{0})} \& \color{gray!50}0 \& \\
+	    0 \& \frac{\ker(d^{0})+(d^{0})^{-1}(F^{1}C^{1})}{F^{1}C^{0}} \& \frac{F^{1}C^{1}}{\im\left(d^{0}|_{F^{1}C}\right)} \& \\
+	    -1\hspace{2mm} \& \color{gray!50}0 \& \ker\left(d^{0}|_{F^{1}C}\right) \& \\
+	    \quad\strut \& 0 \& 1 \& \strut \\};
+	\draw[-stealth, ultra thick] (m-5-1.east) -- (m-1-1.east) node[above]{$q$};
+	\draw[-stealth, ultra thick] (m-5-1.north) -- (m-5-4.north) node[right]{$p$};
+	\draw[-stealth, shorten >=5mm,shorten <=5mm] (m-3-2) -- node [above] {$d^{0,0}_{1}$} (m-3-3.173);
+	\draw[shorten >=8mm,shorten <=8mm,gray!50,-stealth] (m-2-2) -- (m-2-3.184);
+	\draw[shorten >=4mm,shorten <=8mm,gray!50,-stealth] (m-4-2) -- (m-4-3.179);
+    \end{tikzpicture}
+    \pause
+
+    \begin{itemize}
+	\item The original differential $d^{0}$ induces the differential $d^{0,0}_{1}$.
+	    \pause
+
+	\item More generally, if we had started from a longer complex, the original differentials would induce the horizontal differentials.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Baby Example}: $2^{\mathrm{nd}}$ approximation to the $\gr^{0}H$ part}
+    We compare now $\gr^{1}H$ (left column) to $H(\gr^{1}C)$ (right column):
+    \vspace{3mm}
+
+    \adjustbox{scale=1.3,center}{%
+    \begin{tcolorbox}[colback=red!15!white,colframe=orange!5!white,text width=8cm]
+	\begin{tikzcd}[ampersand replacement=\&]
+	    \ker\left(d^{0}|_{F^{1}C}\right)[0] \&[-15pt] \&[-15pt] \ker\left(d^{0}|_{F^{1}C}\right)[0] \\[-20pt]
+	    \op \& \& \op \\[-20pt]
+	    \left(\frac{F^{1}C^{1}+\im(d^{0})}{\im(d^{0})}\right)[-1] \& \& \left(\frac{F^{1}C^{1}}{\im\left(d^{0}|_{F^{1}C}\right)}\right)[-1] 
+	\end{tikzcd}
+    \end{tcolorbox}}
+    \pause
+
+    \vspace{5mm}
+    \begin{itemize}
+	\item In this case $H^{0}(\gr^{0}C)$ does compute $\gr^{0}H^{0}$ (top row),
+	    \pause
+	
+	    \vspace{3mm}
+	\item but $H^{1}(\gr^{0}C)$ is not isomorphic to $\gr^{0}H^{1}$ (bottom row).
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
