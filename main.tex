@@ -362,10 +362,32 @@
 		\vspace{2mm}
 		\pause
 
-	    \item In general, since $F^{p+1}C\subseteq F^{p}C$ is a subcomplex, the original differentials induce all vertical differentials.
+	    \item In general, since $F^{p+1}C\subseteq F^{p}C$ is a subcomplex, the original differentials induce the vertical differentials.
 	\end{itemize}
     \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Baby Example}: compute cohomology of the columns $\gr^{p}C$}
+    From the $p=0$ column in the ``$E_{0}$-page'' we compute
+    \vspace{3mm}
+
+    \adjustbox{scale=1.1,center}{%
+    \begin{tcolorbox}[colback=yellow!25!white,colframe=orange!5!white,text width=10cm]
+    \vspace{-3mm}
+	\[ H(\gr^{0}C)=\left(\frac{\ker(d^{0})+(d^{0})^{-1}(F^{1}C)}{F^{1}C^{0}}\right)[0]\op \left(\frac{C^{1}}{F^{1}C^{1}+\im(d^{0})}\right)[-1] \]
+    \end{tcolorbox}}
+    \pause
+
+    \vspace{6mm}
+    And from the $p=1$ column in the ``$E_{0}$-page'' we compute
+    \vspace{3mm}
+
+    \adjustbox{scale=1.1,center}{%
+    \begin{tcolorbox}[colback=yellow!25!white,colframe=orange!5!white,text width=10cm]
+	\[ H(\gr^{1}C)=\ker\left(d^{0}|_{F^{1}C}\right)[0]\op \left(\frac{F^{1}C^{1}}{\im(d^{0}|_{F^{1}C})}\right)[-1] \]
+    \end{tcolorbox}}
 \end{frame}
 
 \begin{frame}
