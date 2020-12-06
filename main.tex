@@ -17,6 +17,9 @@
 \input{preamble}
 \allowdisplaybreaks
 
+\setbeamertemplate{theorems}[numbered]
+
+
 %
 % ABOUT FONT DEFINTIONS IN THE PREAMBLE
 %
@@ -70,14 +73,14 @@
 % THEOREM ENVIRONMENTS
 %
 % Theorems, propositions, etc (dark green)
-\theoremstyle{darkgreentheorem}
+\theoremstyle{plain}
 \newtheorem{thm}{Theorem}
 \newtheorem{lm}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{conj}[thm]{Conjecture}
 % Definitions (dark blue)
-\theoremstyle{darkbluedefinition}
+\theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 % Examples (dark red)
 \theoremstyle{darkredexample}
@@ -565,6 +568,58 @@
 	\]
     \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Definition} \cite[\href{https://stacks.math.columbia.edu/tag/011N}{Tag 011N}]{stacks}}
+    A \textit{spectral sequence} in an abelian category $\calA$ is given by a system $(E_{r},d_{r})_{r\in \N}$ such that for all $r\in \N$ we have:
+    \pause
+    \begin{itemize}
+	\item $E_{r}$ is an object of $\calA$;
+	    \pause
+	\item $d_{r}\colon E_{r}\to E_{r}$ is a morphism such that $d_{r}\circ d_{r}=0$;
+	    \pause
+	\item and $E_{r+1}=\ker(d_{r})/\im(d_{r})$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Existence} \cite[\href{https://stacks.math.columbia.edu/tag/012M}{Tag 012M}]{stacks}}
+    Let $F^{\bullet}C$ be a filtered complex in an abelian category $\calA$.
+    \pause
+    Then there is a spectral sequence $(E_{r},d_{r})_{r\in \N}$ of bigraded objects in $\calA$ such that $d_{r}$ has bidegree $(r,-r+1)$.
+    \pause
+    More explicitly, the ``$E_{0}$-page'' is given by
+    \begin{itemize}
+	\item $E_{0}^{p,q}=\gr^{p}C^{p+q}$,
+	\item $d_{0}^{p,q}=\gr^{p}(d^{p+q})\colon E_{0}^{p,q}\to E_{0}^{p,q+1}$;
+    \end{itemize}
+    \pause
+    and the ``$E_{r}$-page'' is given by
+    \begin{itemize}
+	\item $E_{r}^{p,q}=(F^{p}C^{p+q}\cap d^{-1}(F^{p+r}C^{p+q+1}))/(F^{p}C^{p+q}\cap d(F^{p-r}C^{p+q-1}))$,
+	\item $d_{r}^{p,q}\colon E_{r}^{p,q}\to E_{r}^{p+r,q-r+1}$ induced by $d^{p+q}\colon F^{p}C^{p+q}\to F^{p+r}C^{p+r+q-r+1}$.
+    \end{itemize}
+    \pause
+    
+    If the filtration induced on each $C^{n}$ was finite, then letting $r\to\infty$ we would obtain the \textit{limit} $E_{\infty}$ of the spectral sequence, given by
+    \[ E_{\infty}^{p,q}=(F^{p}C^{p+q}\cap \ker(d))/(F^{p}C^{p+q}\cap \im(d)). \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Convergence}: $E_{r}^{p,q}\Rightarrow H^{p+q}(C)$ \cite[Theorem 2.6]{mcc01}}
+    Let $F^{\bullet}C$ be a filtered complex in an abelian category $\calA$ and assume that the filtration induced on each $C^{n}$ is finite.
+    Then:
+    \pause
+    \begin{itemize}
+	\item The induced filtration $F^{\bullet}H$ is finite.
+	\item For each $p,q\in \Z$ there exists $r_{0}\in \N$ such that
+	    \[ E_{\infty}^{p,q}=E_{r}^{p,q} \text{ for all } r\geqslant r_{0}. \]
+	\item The spectral sequence \textit{converges} to $F^{\bullet}H$, i.e.
+	    \[ E_{\infty}^{p,q}\cong \gr^{p}H^{p+q} \text{ for all }p,q\in\Z. \]
+    \end{itemize}
+    In particular, modulo extension problems (e.g.~if we are working with vector spaces), we can recover $H$ as
+    \[ H^{n}(C)\cong \bigoplus_{p\in \Z}E_{\infty}^{p,n-p}\text{ for all }n\in\Z. \]
 \end{frame}
 
 \begin{frame}
