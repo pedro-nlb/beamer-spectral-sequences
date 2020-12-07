@@ -127,6 +127,7 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\gr}{gr}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
 
 %
 % OTHER COMMANDS
@@ -640,8 +641,45 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{\textsc{Snake Lemma}: total complex}
+    \frametitle{\textsc{Snake Lemma}: statement}
+    Consider a commutative diagram
+    \adjustbox{scale=1.2,center}{%
+	\begin{tikzcd}[ampersand replacement=\&]
+	    0\arrow{r} \& A' \arrow{r}{f'}\& B'\arrow{r}{g'} \& C'\arrow{r} \& 0 \\
+	    0\arrow{r} \& A\arrow{u}{a}\arrow{r}{f} \& B\arrow{u}{b}\arrow{r}{g} \& C\arrow{u}{c}\arrow{r} \& 0
+	\end{tikzcd}
+    }
+    in which both rows are exact.
+    \pause
+    Then there is an exact sequence
+    \[ 0\to \ker{a}\to \ker{b}\to \ker{c}\to \coker{a}\to \coker{b}\to \coker{b}\to 0. \]
 \end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Snake Lemma}: double complex and its total complex}
+    We relabel the diagram to see it as a double complex
+    \adjustbox{scale=1.2,center}{%
+	\begin{tikzcd}[ampersand replacement=\&]
+	    0\arrow{r} \& C^{0,1}\arrow{r}{d_{h}^{0,1}} \& C^{1,1}\arrow{r}{d_{h}^{1,1}} \& C^{2,1}\arrow{r} \& 0 \\
+	    0 \arrow{r} \& C^{0,0}\arrow{r}{d_{h}^{0,0}}\arrow{u}{d_{v}^{0,0}} \& C^{1,0}\arrow{r}{d_{h}^{1,0}}\arrow{u}{d_{v}^{1,0}} \& C^{2,0}\arrow{r}\arrow{u}{d_{v}^{2,0}} \& 0
+	\end{tikzcd}
+    }
+    \pause
+    whose total complex $sC$ is then
+    \[ \cdots \to 0\to C^{0,0}\to C^{0,1}\op C^{1,0}\to C^{1,1}\op C^{2,0}\to C^{2,1}\to 0\to \cdots \]
+    with differentials
+    \[ d_{sC}^{n}:=\begin{pmatrix}
+	d_{h}^{d_{h}^{n-1,1}} & (-1)^{n}d_{v}^{n,0} \\
+	0 & d_{h}^{n,0}
+    \end{pmatrix}
+    \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Snake Lemma}: first filtration}
+    The first filtration $F_{I}^{\bullet}sC$ is defined by
+    \[ F_{I}^{p}sC^{n}:=\bigoplus_{i+j=n,i\geqslant p} C^{i,j}. \]
+    So in our case we have
 
 \begin{frame}
     \frametitle{References}

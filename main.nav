@@ -42,12 +42,14 @@
 \headcommand {\beamer@framepages {55}{56}}
 \headcommand {\slideentry {0}{0}{22}{57/60}{}{0}}
 \headcommand {\beamer@framepages {57}{60}}
-\headcommand {\slideentry {0}{0}{23}{61/61}{}{0}}
-\headcommand {\beamer@framepages {61}{61}}
-\headcommand {\slideentry {0}{0}{24}{62/62}{}{0}}
-\headcommand {\beamer@framepages {62}{62}}
-\headcommand {\beamer@partpages {1}{62}}
-\headcommand {\beamer@subsectionpages {1}{62}}
-\headcommand {\beamer@sectionpages {1}{62}}
-\headcommand {\beamer@documentpages {62}}
-\headcommand {\gdef \inserttotalframenumber {24}}
+\headcommand {\slideentry {0}{0}{23}{61/62}{}{0}}
+\headcommand {\beamer@framepages {61}{62}}
+\headcommand {\slideentry {0}{0}{24}{63/64}{}{0}}
+\headcommand {\beamer@framepages {63}{64}}
+\headcommand {\slideentry {0}{0}{25}{65/65}{}{0}}
+\headcommand {\beamer@framepages {65}{65}}
+\headcommand {\beamer@partpages {1}{65}}
+\headcommand {\beamer@subsectionpages {1}{65}}
+\headcommand {\beamer@sectionpages {1}{65}}
+\headcommand {\beamer@documentpages {65}}
+\headcommand {\gdef \inserttotalframenumber {25}}
