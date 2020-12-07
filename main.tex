@@ -226,8 +226,8 @@
     % Place nodes
     \node [start] (complex) {$C$};
     \node [cloud, below of=complex, node distance=15mm] (filtration) {$F^{\bullet}C$};
-    \node [block, left of=filtration, node distance=3cm] (gradedC) {$\gr^{p}C$};
-    \node [block, right of=filtration, node distance=3cm] (induced) {$F^{\bullet}H$};
+    \node [block, right of=filtration, node distance=3cm] (gradedC) {$\gr^{p}C$};
+    \node [block, left of=filtration, node distance=3cm] (induced) {$F^{\bullet}H$};
     \node [block, below of=gradedC, node distance=20mm] (cohomGradedC) {$H(\gr^{p}C)$};
     \node [block, below of=induced, node distance=20mm] (gradedH) {$\gr^{p}H$};
     \node [decision, below of=filtration, node distance=30mm] (compare) {$\cong $?};
@@ -620,6 +620,27 @@
     \end{itemize}
     In particular, modulo extension problems (e.g.~if we are working with vector spaces), we can recover $H$ as
     \[ H^{n}(C)\cong \bigoplus_{p\in \Z}E_{\infty}^{p,n-p}\text{ for all }n\in\Z. \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Applications} of spectral sequences from filtrations}
+    \begin{itemize}
+	\item Cellular homology and singular homology of a CW complex agree \cite[Theorem 4.13]{mcc01}.
+	    \pause
+
+	\item ``Cheap Hodge decomposition'' \cite[Remark 8.29]{voi02}.
+	    \pause
+
+	\item Two different ways to compute the cohomology of the total complex of a double complex.
+    \end{itemize}
+    \pause
+
+    To avoid getting too much into specific topics, we will focus on the third application.
+    We will do this again with an example.
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Snake Lemma}: total complex}
 \end{frame}
 
 \begin{frame}
