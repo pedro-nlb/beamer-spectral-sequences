@@ -671,7 +671,7 @@
     \[ d_{sC}^{n}:=\begin{pmatrix}
 	d_{h}^{d_{h}^{n-1,1}} & (-1)^{n}d_{v}^{n,0} \\
 	0 & d_{h}^{n,0}
-    \end{pmatrix}
+    \end{pmatrix}.
     \]
 \end{frame}
 
@@ -679,7 +679,94 @@
     \frametitle{\textsc{Snake Lemma}: first filtration}
     The first filtration $F_{I}^{\bullet}sC$ is defined by
     \[ F_{I}^{p}sC^{n}:=\bigoplus_{i+j=n,i\geqslant p} C^{i,j}. \]
-    So in our case we have
+    \pause
+    Therefore $\gr_{I}^{p}sC=C^{p,\bullet}$ with the differential as before up to a sign.
+    \pause
+
+    Associated to this filtration we get the spectral sequence
+    \[ E_{1}^{p,q}=H^{q}(C^{p,\bullet})\Rightarrow H^{p+q}(sC). \]
+    \pause
+
+    Right now we cannot immediately say much more, but we will come back to this soon!
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Snake Lemma}: second filtration}
+    The second filtration $F_{II}^{\bullet}sC$ is defined by
+    \[ F_{II}^{p}sC^{n}:=\bigoplus_{i+j=n,j\geqslant p} C^{i,j}. \]
+    \pause
+    Therefore $\gr_{II}^{p}sC=C^{\bullet,p}$ with the differential as before.
+    \pause
+
+    In this case we get the spectral sequence
+    \[ E_{1}^{p,q}=H^{q}(C^{\bullet,p})\Rightarrow H^{p+q}(sC). \]
+    \pause
+
+    Since the rows $C^{\bullet,p}$ were exact, $E_{1}^{p,q}=0$ for all $p,q\in \Z$.
+    \pause
+
+    Therefore $H(sC)$ must be zero!
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Snake Lemma}: back to the first spectral sequence}
+    Using what we deduced from the second spectral sequence, we have now
+    \[ E_{1}^{p,q}=H^{q}(C^{p,\bullet})\Rightarrow 0. \]
+    \pause
+    Let's draw the ``$E_{1}$-page'': 
+    \adjustbox{scale=0.9,center}{%
+    \begin{tikzpicture}[ampersand replacement=\&]
+	\matrix (m) [matrix of math nodes,
+	nodes in empty cells, nodes={minimum width=5ex,
+	minimum height=4ex, outer sep=-5pt},
+	column sep=4ex, row sep=1ex]{
+	    \& \& \& \& \& \&\\
+	    1 \& 0 \& \coker(d_{v}^{0,0}) \& \coker(d_{v}^{1,0}) \& \coker(d_{v}^{2,0}) \& 0 \& \\
+	    0 \& 0 \& \ker(d_{v}^{0,0}) \& \ker(d_{v}^{1,0}) \& \ker(d_{v}^{2,0}) \& 0 \& \\
+	    \quad\strut \& -1 \& 0 \& 1 \& 2 \& 3 \& \strut \\};
+	\draw[-stealth, ultra thick] (m-4-1.east) -- (m-1-1.east) node[above]{$q$};
+	\draw[-stealth, ultra thick] (m-4-1.north) -- (m-4-7.north) node[right]{$p$};
+	\draw[-stealth, shorten >=2mm, shorten <=2mm] (m-2-2) -- (m-2-3);
+	\draw[-stealth, shorten >=2mm, shorten <=2mm] (m-3-2) -- (m-3-3);
+	\draw[-stealth, shorten >=2mm, shorten <=2mm] (m-2-3) -- (m-2-4);
+	\draw[-stealth, shorten >=2mm, shorten <=2mm] (m-3-3) -- (m-3-4);
+	\draw[-stealth, shorten >=2mm, shorten <=2mm] (m-2-4) -- (m-2-5);
+	\draw[-stealth, shorten >=2mm, shorten <=2mm] (m-3-4) -- (m-3-5);
+	\draw[-stealth, shorten >=2mm, shorten <=2mm] (m-2-5) -- (m-2-6);
+	\draw[-stealth, shorten >=2mm, shorten <=2mm] (m-3-5) -- (m-3-6);
+    \end{tikzpicture}
+    }
+    To show that the top and bottom rows are right and left exact respectively, we would like to have $0$'s at the corresopnding $E_{2}$ spots.
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textsc{Snake Lemma}: $E_{2}^{p,q}$ of the first spectral sequence}
+    The ``$E_{2}$-page'' contains only one non-trivial differential:
+    \adjustbox{scale=0.9,center}{%
+    \begin{tikzpicture}[ampersand replacement=\&]
+	\matrix (m) [matrix of math nodes,
+	nodes in empty cells, nodes={minimum width=5ex,
+	minimum height=4ex, outer sep=-5pt},
+	column sep=4ex, row sep=1ex]{
+	    \& \& \& \& \& \&\\
+	    1 \& 0 \& E_{2}^{0,1} \& E_{\infty}^{1,1} \& E_{\infty}^{2,1} \& 0 \& \\
+	    0 \& 0 \& E_{\infty}^{0,0} \& E_{\infty}^{1,0} \& E_{2}^{2,0} \& 0 \& \\
+	    \quad\strut \& -1 \& 0 \& 1 \& 2 \& 3 \& \strut \\};
+	\draw[-stealth, ultra thick] (m-4-1.east) -- (m-1-1.east) node[above]{$q$};
+	\draw[-stealth, ultra thick] (m-4-1.north) -- (m-4-7.north) node[right]{$p$};
+	\draw[-stealth, shorten >=5mm, shorten <=5mm] (m-2-3) -- (m-3-5);
+    \end{tikzpicture}
+    }
+    \pause
+    \begin{itemize}
+	\item Since $E_{r}^{p,q}\Rightarrow 0$, all limit objects must be zero!
+	    \pause
+	\item So the top and bottom row in the previous page were right and left exact respectively, as we wanted.
+	    \pause
+	\item $E_{3}=E_{\infty}=0$, so $E_{2}^{0,1}\to E_{2}^{2,0}$ is an isomorphism and we can glue
+	    \[ \ker(d_{v}^{1,0})\to \ker(d_{v}^{2,0})\twoheadrightarrow E_{2}^{2,0}\cong E_{2}^{0,0}\hookrightarrow \coker(d_{v}^{0,0})\to \coker(d_{v}^{1,0}). \]
+    \end{itemize}
+\end{frame}
 
 \begin{frame}
     \frametitle{References}
