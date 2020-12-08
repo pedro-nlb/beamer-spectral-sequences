@@ -250,7 +250,7 @@
 
 \begin{frame}
     \frametitle{Filtration induced in cohomology}
-    A filtration on the complx $F^{\bullet}C$ induces a filtration in cohomology
+    A filtration on the complex $F^{\bullet}C$ induces a filtration in cohomology
     \[ F^{p}H:=\im(H(F^{p}C)\to H(C))\subseteq H(C)=H, \]
     where $H(F^{p}C)\to H(C)$ is induced by the inclusion map $F^{p}C\hookrightarrow C$.
 \end{frame}
@@ -473,24 +473,25 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{\textsc{Baby Example}: $2^{\mathrm{nd}}$ approximation to $\gr H$}
+    \frametitle{\textsc{Baby Example}: turn the page by taking cohomology again}
+    The ``$E_{2}$-page'' reads:
+    \begin{tikzpicture}[ampersand replacement=\&]
+	\matrix (m) [matrix of math nodes,
+	nodes in empty cells, nodes={minimum width=5ex,
+	minimum height=5ex, outer sep=-5pt},
+	column sep=8ex, row sep=1ex]{
+	    \&  \&  \& \\
+	    1 \& \frac{C^{1}}{F^{1}C^{1}+\im(d^{0})} \& 0 \& \\
+	    0 \& \frac{\ker(d^{0})}{\ker\left(d^{0}|_{F^{1}C}\right)} \& \frac{F^{1}C^{1}+\im(d^{0})}{\im(d^{0})} \& \\
+	    -1\hspace{2mm} \& 0 \& \ker\left(d^{0}|_{F^{1}C}\right) \& \\
+	    \quad\strut \& 0 \& 1 \& \strut \\};
+	\draw[-stealth, ultra thick] (m-5-1.east) -- (m-1-1.east) node[above]{$q$};
+	\draw[-stealth, ultra thick] (m-5-1.north) -- (m-5-4.north) node[right]{$p$};
+    \end{tikzpicture}
+    \pause
+
     \begin{itemize}
-	\item We obtained the $1^{\mathrm{st}}$ approximation by taking cohomologies on the ``$E_{0}$-page''.
-	    \pause 
-	    
-	\item These $1^{\mathrm{st}}$ approximations were then organized into the ``$E_{1}$-page'' in such a way that $\gr^{p}H^{n}$ would correspond to $E_{1}^{p,n-p}$.
-	    \pause
-	    
-	\item For example, we have seen that
-	    \begin{itemize}
-		\item $\gr^{0}H^{1}=E_{1}^{0,1}$, altough $\gr^{0}H^{0}\neq E_{1}^{0,0}$;
-		    \pause
-		\item $\gr^{1}H^{0}=E_{1}^{1,-1}$, although $\gr^{1}H^{1}\neq E_{1}^{1,0}$.
-	    \end{itemize}
-	    \pause
-	\item Continuing with this way to arrange things, we define the ``$E_{2}$-page'' by taking cohomologies at each point of the ``$E_{1}$-page'', that is
-	    \[ E_{2}^{p,q}:=H^{p}(E_{1}^{\bullet,q}), \]
-	    so that $\gr^{p}H^{n}$ would again correspond to $E_{2}^{p,n-p}$.
+	\item If we had started from a longer complex, the original differentials would induce arrows of type $(2,-1)$.
     \end{itemize}
 \end{frame}
 
@@ -534,21 +535,6 @@
 
 \begin{frame}
     \frametitle{\textsc{Baby Example}: reading off the result from the ``$E_{2}$-page''}
-    \begin{tikzpicture}[ampersand replacement=\&]
-	\matrix (m) [matrix of math nodes,
-	nodes in empty cells, nodes={minimum width=5ex,
-	minimum height=5ex, outer sep=-5pt},
-	column sep=8ex, row sep=1ex]{
-	    \&  \&  \& \\
-	    1 \& \frac{C^{1}}{F^{1}C^{1}+\im(d^{0})} \& 0 \& \\
-	    0 \& \frac{\ker(d^{0})}{\ker\left(d^{0}|_{F^{1}C}\right)} \& \frac{F^{1}C^{1}+\im(d^{0})}{\im(d^{0})} \& \\
-	    -1\hspace{2mm} \& 0 \& \ker\left(d^{0}|_{F^{1}C}\right) \& \\
-	    \quad\strut \& 0 \& 1 \& \strut \\};
-	\draw[-stealth, ultra thick] (m-5-1.east) -- (m-1-1.east) node[above]{$q$};
-	\draw[-stealth, ultra thick] (m-5-1.north) -- (m-5-4.north) node[right]{$p$};
-    \end{tikzpicture}
-    \pause
-
     \begin{columns}
     \begin{column}{0.5\textwidth}
     \begin{itemize}
@@ -569,6 +555,19 @@
 	\]
     \end{column}
     \end{columns}
+    \begin{tikzpicture}[ampersand replacement=\&]
+	\matrix (m) [matrix of math nodes,
+	nodes in empty cells, nodes={minimum width=5ex,
+	minimum height=7ex, outer sep=-5pt},
+	column sep=7ex, row sep=1ex]{
+	    \&  \&  \& \\
+	    \& \frac{C^{1}}{F^{1}C^{1}+\im(d^{0})} \& 0 \& \\
+	    \& \frac{\ker(d^{0})}{\ker\left(d^{0}|_{F^{1}C}\right)} \& \frac{F^{1}C^{1}+\im(d^{0})}{\im(d^{0})} \& \\
+	    \hspace{2mm} \& 0 \& \ker\left(d^{0}|_{F^{1}C}\right) \& \\
+	    \quad\strut \& \& \& \strut \\};
+	\draw[blue,-stealth,dashed,shorten <=5mm,shorten >=5mm] (m-1-1) node{\usebeamercolor[fg]{frametitle}{$p+q=1$}} -- (m-4-4) node{\usebeamercolor[fg]{frametitle}{$H^{1}$}};
+	\draw[blue,-stealth,dashed,shorten <=5mm,shorten >=5mm] (m-2-1) node{\usebeamercolor[fg]{frametitle}{$p+q=0$}}-- (m-5-4) node{\usebeamercolor[fg]{frametitle}{$H^{0}$}};
+    \end{tikzpicture}
 \end{frame}
 
 \begin{frame}
