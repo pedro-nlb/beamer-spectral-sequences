@@ -1,4 +1,4 @@
-\documentclass[notheorems, hyperref={backref}]{beamer}
+\documentclass[notheorems]{beamer}
 
 %% KEY LINES IN THIS TEX FILE %% (enter line number+gg to go)
 
@@ -555,6 +555,7 @@
 	\]
     \end{column}
     \end{columns}
+    \pause
     \begin{tikzpicture}[ampersand replacement=\&]
 	\matrix (m) [matrix of math nodes,
 	nodes in empty cells, nodes={minimum width=5ex,
@@ -613,10 +614,13 @@
     \pause
     \begin{itemize}
 	\item The induced filtration $F^{\bullet}H$ is finite.
+	    \pause
 	\item For each $p,q\in \Z$ there exists $r_{0}\in \N$ such that
 	    \[ E_{\infty}^{p,q}=E_{r}^{p,q} \text{ for all } r\geqslant r_{0}. \]
+	    \pause
 	\item The spectral sequence \textit{converges} to $F^{\bullet}H$, i.e.
 	    \[ E_{\infty}^{p,q}\cong \gr^{p}H^{p+q} \text{ for all }p,q\in\Z. \]
+	    \pause
     \end{itemize}
     In particular, modulo extension problems (e.g.~if we are working with vector spaces), we can recover $H$ as
     \[ H^{n}(C)\cong \bigoplus_{p\in \Z}E_{\infty}^{p,n-p}\text{ for all }n\in\Z. \]
@@ -666,9 +670,10 @@
     \pause
     whose total complex $sC$ is then
     \[ \cdots \to 0\to C^{0,0}\to C^{0,1}\op C^{1,0}\to C^{1,1}\op C^{2,0}\to C^{2,1}\to 0\to \cdots \]
+    \pause
     with differentials
     \[ d_{sC}^{n}:=\begin{pmatrix}
-	d_{h}^{d_{h}^{n-1,1}} & (-1)^{n}d_{v}^{n,0} \\
+	d_{h}^{n-1,1} & (-1)^{n}d_{v}^{n,0} \\
 	0 & d_{h}^{n,0}
     \end{pmatrix}.
     \]
@@ -686,7 +691,7 @@
     \[ E_{1}^{p,q}=H^{q}(C^{p,\bullet})\Rightarrow H^{p+q}(sC). \]
     \pause
 
-    Right now we cannot immediately say much more, but we will come back to this soon!
+    Right now we cannot immediately say much more, but we will come back to this soon.
 \end{frame}
 
 \begin{frame}
@@ -704,7 +709,7 @@
     Since the rows $C^{\bullet,p}$ were exact, $E_{1}^{p,q}=0$ for all $p,q\in \Z$.
     \pause
 
-    Therefore $H(sC)$ must be zero!
+    Therefore $H(sC)$ must be zero.
 \end{frame}
 
 \begin{frame}
@@ -758,17 +763,17 @@
     }
     \pause
     \begin{itemize}
-	\item Since $E_{r}^{p,q}\Rightarrow 0$, all limit objects must be zero!
+	\item Since $E_{r}^{p,q}\Rightarrow 0$, all limit objects must be zero.
 	    \pause
 	\item So the top and bottom row in the previous page were right and left exact respectively, as we wanted.
 	    \pause
 	\item $E_{3}=E_{\infty}=0$, so $E_{2}^{0,1}\to E_{2}^{2,0}$ is an isomorphism and we can glue
-	    \[ \ker(d_{v}^{1,0})\to \ker(d_{v}^{2,0})\twoheadrightarrow E_{2}^{2,0}\cong E_{2}^{0,0}\hookrightarrow \coker(d_{v}^{0,0})\to \coker(d_{v}^{1,0}). \]
+	    \[ \ker(d_{v}^{1,0})\to \ker(d_{v}^{2,0})\twoheadrightarrow E_{2}^{2,0}\cong E_{2}^{0,1}\hookrightarrow \coker(d_{v}^{0,0})\to \coker(d_{v}^{1,0}). \]
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{References}
+    \frametitle{Thanks for your attention! Here are the references:}
     \bibliographystyle{alpha}
     \bibliography{main.bib}
 \end{frame}
