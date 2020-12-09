@@ -257,7 +257,7 @@
 
 \begin{frame}
     \frametitle{\textsc{Baby Example}: 2 step filtration on a length 1 complex}
-    \adjustbox{scale=1.2,center}{%
+    \adjustbox{scale=1.1,center}{%
 	\begin{tikzcd}[ampersand replacement=\&]
 	    C \&[-20pt] \&[-15pt] \&[-15pt] \&[10pt] \&[-15pt] \&[-15pt] \\[-15pt]
 	    F^{0}C\arrow[draw=none]{u}[sloped,auto=false]{=} \& \cdots\arrow{r} \& 0\arrow{r} \& C^{0}\arrow{r}{d^{0}} \arrow{r} \& C^{1}\arrow{r} \& 0\arrow{r} \& \cdots \\
@@ -266,6 +266,25 @@
 	    0\arrow[draw=none]{u}[sloped,auto=false]{=} \& \& \& \& \& \&
 	\end{tikzcd}
     }
+    \pause
+    \begin{columns}
+	\begin{column}{0.3\textwidth}
+	    \begin{figure}[htp]
+		\centering
+		\includegraphics[scale=1.2]{pictures/fallingrocks}
+	    \end{figure}
+	\end{column}
+	\pause
+	\begin{column}{0.9\textwidth}
+	    \begin{itemize}
+		\item Some $c\in C^{0}\setminus F^{1}C^{0}$ may end up in $F^{1}C^{1}$ under $d^{0}$.
+		    \pause
+		\item The $\gr^{p}C$'s will not be able to detect this.
+		    \pause
+		\item Don't panic: \usebeamercolor[fg]{frametitle}{spectral sequences will account for that}.
+	    \end{itemize}
+	\end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -598,13 +617,56 @@
     \pause
     and the ``$E_{r}$-page'' is given by
     \begin{itemize}
-	\item $E_{r}^{p,q}=(F^{p}C^{p+q}\cap d^{-1}(F^{p+r}C^{p+q+1}))/(F^{p}C^{p+q}\cap d(F^{p-r}C^{p+q-1}))$,
+	\item $E_{r}^{p,q}=Z_{r}^{p,q}/B_{r}^{p,q}$, where
+	\item $Z_{r}^{p,q}=(F^{p}C^{p+q}\cap d^{-1}(F^{p+r}C^{p+q+1})+F^{p+1}C^{p+q})/F^{p+1}C^{p+q}$, and
+	\item $B_{r}^{p.q}=(F^{p}C^{p+q}\cap d(F^{p-r+1}C^{p+q-1})+F^{p+1}C^{p+q})/F^{p+1}C^{p+q}$;
 	\item $d_{r}^{p,q}\colon E_{r}^{p,q}\to E_{r}^{p+r,q-r+1}$ induced by $d^{p+q}\colon F^{p}C^{p+q}\to F^{p+r}C^{p+r+q-r+1}$.
     \end{itemize}
     \pause
     
     If the filtration induced on each $C^{n}$ was finite, then letting $r\to\infty$ we would obtain the \textit{limit} $E_{\infty}$ of the spectral sequence, given by
     \[ E_{\infty}^{p,q}=(F^{p}C^{p+q}\cap \ker(d))/(F^{p}C^{p+q}\cap \im(d)). \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{What's up with those crazy formulas for $E_{r}^{p,q}=Z_{r}^{p,q}/B_{r}^{p,q}$?}
+    \begin{columns}
+	\begin{column}{0.4\textwidth}
+	    \begin{figure}[htp]
+		\centering
+		\includegraphics[scale=1.2]{pictures/fallingrocks}
+	    \end{figure}
+	\end{column}
+	\pause
+	\begin{column}{0.8\textwidth}
+	    \begin{itemize}
+		\item Remember the falling rocks?
+		    \pause
+		\item These were elements in our complex that fell down a number of levels when we applied the differential $d$.
+	    \end{itemize}
+	\end{column}
+    \end{columns}
+    \pause
+    
+    \vspace{1cm}
+    $Z_{r}^{p,q}=(F^{p}C^{p+q}\cap d^{-1}(F^{p+r}C^{p+q+1})+F^{p+1}C^{p+q})/F^{p+1}C^{p+q}$ says:
+    \pause
+
+    \begin{center}
+	\usebeamercolor[fg]{frametitle}{``Elements in $F^{p}C^{p+q}$ which will fall down at least $r$ levels
+
+	and we don't care what happens in $F^{p+1}C^{p+q}$.''}
+    \end{center}
+    \pause
+
+    And $B_{r}^{p,q}=(F^{p}C^{p+q}\cap d(F^{p-r+1}C^{p+q-1})+F^{p+1}C^{p+q})/F^{p+1}C^{p+q}$ says:
+    \pause
+
+    \begin{center}
+	\usebeamercolor[fg]{frametitle}{``Elements in $F^{p}C^{p+q}$ which came falling down at most $r-1$ levels
+
+	and we don't care about the ones in $F^{p+1}C^{p+q}$.''}
+    \end{center}
 \end{frame}
 
 \begin{frame}
@@ -740,6 +802,7 @@
 	\draw[-stealth, shorten >=2mm, shorten <=2mm] (m-3-5) -- (m-3-6);
     \end{tikzpicture}
     }
+    \pause
     To show that the top and bottom rows are right and left exact respectively, we would like to have $0$'s at the corresopnding $E_{2}$ spots.
 \end{frame}
 
